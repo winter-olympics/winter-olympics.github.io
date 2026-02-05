@@ -20,17 +20,20 @@ customElements.define('winter-olympics-icon', class extends HTMLElement {
             'ssk': ['Speed Skating', "M296 73c-3-4-8-7-14-7-7-1-16 2-23 8-7-4-17-8-30-8H132c-9-4-15-6-19-6-15 0-20 7-20 8l-5 7h42c3 1 5 2 7 3 12 5 25 11 38 14-8 8-12 19-11 31 0 3 0 5 1 8-19 7-32 26-44 44-4 7-9 13-13 19-9 3-17 5-24 5H83l-5 4 10-13-7-6c-14 17-38 46-38 48l6 6 9-8c25 2 42-11 55-29 22-8 47-22 67-37 0 0 0 0 0 0-4 5-9 12-12 20-4 11-5 24-4 36-10 7-18 14-22 23H128v8H25v9H197l2-9s-21-8-25-27c0-1 1-1 1-1 15-11 32-24 41-42 9-17 4-34 0-47-1-1-1-2-1-4 44 12 63-9 73-21l-6-6c-5 6-13 8-19 6-5-3-6-10-5-19 1-2 1-3 2-5 1 0 1 0 1 0 9 6 19 12 35 7l3-1V89c2-6 0-12-3-16ZM70 221l16-13c4 0 8-1 11-2-7 8-16 14-27 15Zm53-33c2-3 4-5 5-8 12-18 24-34 39-40 2 6 5 12 8 17-16 12-34 23-52 31Zm50 55H152c3-4 8-9 14-14 2 5 4 10 7 14Zm35-66c-7 16-22 27-35 37-1-9 1-18 4-26s7-14 11-18c0 0 0 0 0 0 4 1 10 1 16-7l3-6-6-1c-5-1-9 1-14 3 0 0 0 0 0 0 8-7 15-13 20-20 0 0 1-1 1-1 4 12 7 26 0 39Zm52-60c1 1 3 1 5 1-11 6-26 10-48 4 1-4 2-8 1-11l-1-5-5 1c-9 4-9 12-7 20-2 2-3 4-5 7-5 6-11 12-18 18-5-9-9-21-10-29 0-11 4-21 12-26 1-1 2-1 3-2 10 2 20 2 29-2l8-4-8-4c-10-4-21-4-31 1-10-3-22-7-32-11h76c10 0 18 2 24 6-2 2-3 5-3 7-4 20 5 27 10 29Zm7-38c5-3 11-5 15-5 3 1 6 2 7 4s2 4 2 6c-10 3-16 0-24-5Z"],
         };
         // get icon by property is= or attribute is
-        let [label, path] = this.icons[this.is || this.getAttribute('is')];
-        if (path) {
-            this.style.display = 'inline-block';
-            this.style.width = '100%';
-            this.innerHTML =
-                `<svg viewBox="0 0 320 320" aria-label="${label}">`
-                + `<title>${label}</title>`
-                + `<path d="${path}" fill="currentColor"/>`
-                + `</svg>`;
-        } else {
-            // <winter-olympics-icon> inside DOM so user can read .icons
+        let is = this.is || this.getAttribute('is');
+        if (is) {
+            let [label, path] = this.icons[is];
+            if (path) {
+                this.style.display = 'inline-block';
+                this.style.width = '100%';
+                this.innerHTML =
+                    `<svg viewBox="0 0 320 320" aria-label="${label}">`
+                    + `<title>${label}</title>`
+                    + `<path d="${path}" fill="currentColor"/>`
+                    + `</svg>`;
+            } else {
+        // <winter-olympics-icon> inside DOM so user can read .icons
+            }
         }
     } // end connectedCallback
 }); // end define
