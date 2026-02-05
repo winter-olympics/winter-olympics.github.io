@@ -1,2 +1,2 @@
-# winter-olympics.github.io
-&lt;winter-olympics> flags, disciplines, ranking
+# 2026 Winter Olympics Icons
+# https://winter-olympics.github.io

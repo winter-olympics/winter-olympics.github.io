@@ -1,174 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Winter Olympics</title>
+    <title>2026 Winter Olympics Icons</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://make-it-snow.github.io/snow.js"></script>
-</head>
-<body>
-    <div class="snow-container"></div>
+    <script src="icons2026.js"></script>
     
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-attachment: fixed;
+            color: #2c3e50;
+            position: relative;
+            overflow-x: hidden;
+        }
+    
+        /* Header Styles */
+        header {
+            text-align: center;
+            padding: 1rem 0.5rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+            border-bottom: 4px solid #4a90e2;
+        }
+    
+        /* Main Content */
+        main {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 2rem 2rem;
+        }
+    
+        #DISCIPLINES {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+        }
+    
+        discipline-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 3px solid transparent;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+    
+        discipline-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            border-color: #4a90e2;
+            box-shadow: 0 15px 30px rgba(74, 144, 226, 0.4);
+        }
+    
+        icon-code {
+            display: block;
+            font-size: 2rem;
+        }
+    
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+        }
+    
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
     <header>
-        <h1>❄️ Winter Olympics ❄️</h1>
-        <p class="tagline">Celebrating Excellence on Ice and Snow</p>
+        <h1>❄️ &lt;winter-olympics-icon is="[code]">&ltwinter-olympics-icon> ❄️ </h1>
+        <p><b>Load with: &lt;script src="https://winter-olympics.github.io/icons2026.js"/></b></p>
     </header>
 
     <main>
         <!-- Disciplines Section -->
-        <section id="disciplines" class="section">
-            <h2>🎿 Winter Disciplines</h2>
-            <div class="disciplines-grid">
-                <!-- Skiing -->
-                <div class="discipline-card">
-                    <svg class="discipline-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="50" cy="20" r="8" fill="#4A90E2"/>
-                        <line x1="50" y1="28" x2="50" y2="55" stroke="#4A90E2" stroke-width="3"/>
-                        <line x1="50" y1="35" x2="35" y2="45" stroke="#4A90E2" stroke-width="3"/>
-                        <line x1="50" y1="35" x2="65" y2="45" stroke="#4A90E2" stroke-width="3"/>
-                        <line x1="50" y1="55" x2="40" y2="75" stroke="#4A90E2" stroke-width="3"/>
-                        <line x1="50" y1="55" x2="60" y2="75" stroke="#4A90E2" stroke-width="3"/>
-                        <line x1="20" y1="85" x2="45" y2="77" stroke="#E74C3C" stroke-width="2"/>
-                        <line x1="55" y1="77" x2="80" y2="85" stroke="#E74C3C" stroke-width="2"/>
-                    </svg>
-                    <h3>Alpine Skiing</h3>
-                </div>
+        <section id="DISCIPLINES" class="section" class="disciplines-grid"></section>
+        <winter-olympics-icon ID="SOURCE"><!-- in DOM to provide all icons --></winter-olympics-icon>
+        <script>
+            // best helper function ever
+            const createElement = (tag, props = {}, append = []) => {
+                let el = document.createElement(tag);
+                Object.assign(el, props); // so innerHTML is set first
+                el.append(...append);
+                return el;
+            }
+            DISCIPLINES.append(
+                ...Object.entries(SOURCE.icons).map(([key, [title]]) => {
+                    console.log(key, title);
+                    return createElement('discipline-card', {}, [
+                        createElement('icon-code', {
+                            innerHTML: key
+                        }),
+                        createElement('winter-olympics-icon', { is: key, title }),
+                        createElement('h3', { innerHTML: title })
+                    ]);
+                })
+            )
+        </script>
 
-                <!-- Ice Hockey -->
-                <div class="discipline-card">
-                    <svg class="discipline-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="50" cy="25" r="8" fill="#4A90E2"/>
-                        <line x1="50" y1="33" x2="50" y2="60" stroke="#4A90E2" stroke-width="3"/>
-                        <line x1="50" y1="40" x2="35" y2="50" stroke="#4A90E2" stroke-width="3"/>
-                        <line x1="50" y1="60" x2="40" y2="80" stroke="#4A90E2" stroke-width="3"/>
-                        <line x1="50" y1="60" x2="60" y2="80" stroke="#4A90E2" stroke-width="3"/>
-                        <path d="M 30 45 Q 20 50 25 58" stroke="#8B4513" stroke-width="3" fill="none"/>
-                        <circle cx="20" cy="60" r="4" fill="#2C3E50"/>
-                    </svg>
-                    <h3>Ice Hockey</h3>
-                </div>
-
-                <!-- Figure Skating -->
-                <div class="discipline-card">
-                    <svg class="discipline-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="50" cy="20" r="8" fill="#E91E63"/>
-                        <line x1="50" y1="28" x2="50" y2="55" stroke="#E91E63" stroke-width="3"/>
-                        <line x1="50" y1="35" x2="30" y2="40" stroke="#E91E63" stroke-width="3"/>
-                        <line x1="50" y1="35" x2="70" y2="30" stroke="#E91E63" stroke-width="3"/>
-                        <line x1="50" y1="55" x2="35" y2="75" stroke="#E91E63" stroke-width="3"/>
-                        <line x1="50" y1="55" x2="65" y2="70" stroke="#E91E63" stroke-width="3"/>
-                        <path d="M 30 75 L 40 77" stroke="#87CEEB" stroke-width="2"/>
-                    </svg>
-                    <h3>Figure Skating</h3>
-                </div>
-
-                <!-- Bobsleigh -->
-                <div class="discipline-card">
-                    <svg class="discipline-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <ellipse cx="50" cy="45" rx="30" ry="20" fill="#E74C3C"/>
-                        <circle cx="35" cy="60" r="8" fill="#2C3E50"/>
-                        <circle cx="65" cy="60" r="8" fill="#2C3E50"/>
-                        <circle cx="45" cy="35" r="6" fill="#4A90E2"/>
-                        <circle cx="55" cy="35" r="6" fill="#4A90E2"/>
-                    </svg>
-                    <h3>Bobsleigh</h3>
-                </div>
-
-                <!-- Snowboarding -->
-                <div class="discipline-card">
-                    <svg class="discipline-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="45" cy="20" r="8" fill="#4A90E2"/>
-                        <line x1="45" y1="28" x2="50" y2="50" stroke="#4A90E2" stroke-width="3"/>
-                        <line x1="50" y1="35" x2="30" y2="45" stroke="#4A90E2" stroke-width="3"/>
-                        <line x1="50" y1="35" x2="65" y2="30" stroke="#4A90E2" stroke-width="3"/>
-                        <line x1="50" y1="50" x2="40" y2="70" stroke="#4A90E2" stroke-width="3"/>
-                        <line x1="50" y1="50" x2="60" y2="70" stroke="#4A90E2" stroke-width="3"/>
-                        <rect x="30" y="72" width="40" height="6" fill="#FF9800" rx="2"/>
-                    </svg>
-                    <h3>Snowboarding</h3>
-                </div>
-
-                <!-- Curling -->
-                <div class="discipline-card">
-                    <svg class="discipline-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="50" cy="25" r="8" fill="#4A90E2"/>
-                        <line x1="50" y1="33" x2="50" y2="55" stroke="#4A90E2" stroke-width="3"/>
-                        <line x1="50" y1="40" x2="35" y2="48" stroke="#4A90E2" stroke-width="3"/>
-                        <line x1="50" y1="55" x2="40" y2="75" stroke="#4A90E2" stroke-width="3"/>
-                        <line x1="50" y1="55" x2="60" y2="75" stroke="#4A90E2" stroke-width="3"/>
-                        <line x1="60" y1="40" x2="75" y2="75" stroke="#8B4513" stroke-width="2"/>
-                        <circle cx="78" cy="80" r="8" fill="none" stroke="#E74C3C" stroke-width="2"/>
-                        <circle cx="78" cy="80" r="5" fill="none" stroke="#E74C3C" stroke-width="2"/>
-                    </svg>
-                    <h3>Curling</h3>
-                </div>
-            </div>
-        </section>
-
-        <!-- Country Flags Section -->
-        <section id="flags" class="section">
-            <h2>🏴 Participating Nations</h2>
-            <div class="flags-grid">
-                <div class="flag-card">
-                    <img src="https://flagmeister.github.io/flags/usa.svg" alt="USA Flag" class="flag-image">
-                    <h3>USA</h3>
-                </div>
-                <div class="flag-card">
-                    <img src="https://flagmeister.github.io/flags/can.svg" alt="Canada Flag" class="flag-image">
-                    <h3>Canada</h3>
-                </div>
-                <div class="flag-card">
-                    <img src="https://flagmeister.github.io/flags/ger.svg" alt="Germany Flag" class="flag-image">
-                    <h3>Germany</h3>
-                </div>
-                <div class="flag-card">
-                    <img src="https://flagmeister.github.io/flags/nor.svg" alt="Norway Flag" class="flag-image">
-                    <h3>Norway</h3>
-                </div>
-                <div class="flag-card">
-                    <img src="https://flagmeister.github.io/flags/swe.svg" alt="Sweden Flag" class="flag-image">
-                    <h3>Sweden</h3>
-                </div>
-                <div class="flag-card">
-                    <img src="https://flagmeister.github.io/flags/fin.svg" alt="Finland Flag" class="flag-image">
-                    <h3>Finland</h3>
-                </div>
-                <div class="flag-card">
-                    <img src="https://flagmeister.github.io/flags/jpn.svg" alt="Japan Flag" class="flag-image">
-                    <h3>Japan</h3>
-                </div>
-                <div class="flag-card">
-                    <img src="https://flagmeister.github.io/flags/kor.svg" alt="South Korea Flag" class="flag-image">
-                    <h3>South Korea</h3>
-                </div>
-                <div class="flag-card">
-                    <img src="https://flagmeister.github.io/flags/aut.svg" alt="Austria Flag" class="flag-image">
-                    <h3>Austria</h3>
-                </div>
-                <div class="flag-card">
-                    <img src="https://flagmeister.github.io/flags/sui.svg" alt="Switzerland Flag" class="flag-image">
-                    <h3>Switzerland</h3>
-                </div>
-            </div>
-        </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Winter Olympics | Celebrating Athletic Excellence</p>
     </footer>
 
-    <script>
-        // Initialize snow effect
-        if (typeof snow !== 'undefined') {
-            snow.init({
-                count: 50,
-                size: 3,
-                speed: 1.5,
-                opacity: 0.8,
-                wind: 0
-            });
-        }
-    </script>
 </body>
+
 </html>
